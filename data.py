@@ -26,9 +26,9 @@ for data_id in range(nr_of_data):
 
     last_price = fake.pyfloat(right_digits=2, positive=True, min_value=1000, max_value=80000)
 
-    data.append([transaction_date, random.choice(commodity), city, current_price, last_price])
+    data.append([data_id, transaction_date, random.choice(commodity), city, current_price, last_price])
 
-data_df = pd.DataFrame(data, columns=['TransactionDate', 'Commodity' ,'City','Current Price', 'Last Price']) 
+data_df = pd.DataFrame(data, columns=['ID', 'TransactionDate', 'Commodity' ,'City','Current Price', 'Last Price']) 
                 
 pd.pandas.set_option('display.max_columns', None)
 print(data_df)
