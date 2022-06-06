@@ -29,8 +29,16 @@ async def get_data(order_by: str = "TransactionDate", page_num: int = 1, page_si
     return data[start:end]
 
 @app.get('/commodity/name/{commodity_name}')
-async def find_commodity(commodity_name: str,  page_num: int = 1, page_size: int = 10):
+async def find_commodity_by_name(commodity_name: str,  page_num: int = 1, page_size: int = 10):
     data = df.loc[df['Commodity'] == commodity_name]
+    data = data.to_dict(orient="records")
+    start = (page_num - 1) * page_size
+    end = start + page_size
+    return data[start:end]
+
+@app.get('/commodity/city/{commodity_city}')
+async def find_commodity_by_city(commodity_city: str,  page_num: int = 1, page_size: int = 10):
+    data = df.loc[df['City'] == commodity_city]
     data = data.to_dict(orient="records")
     start = (page_num - 1) * page_size
     end = start + page_size
