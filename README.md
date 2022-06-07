@@ -1,4 +1,4 @@
-# This is how to run the API
+# This is how to run the app
 
 ## Install Dependencies 
 Install all dependencies 
