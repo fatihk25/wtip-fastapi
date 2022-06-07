@@ -1,7 +1,7 @@
 # This is how to run the API
 
 ## Install Dependencies 
-Install all dependencies using *** pip install <library> *** 
+Install all dependencies 
 ```
     pip install fastapi
     pip install faker
