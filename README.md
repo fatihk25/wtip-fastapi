@@ -10,7 +10,7 @@ Install all dependencies
 
 ## Run the App
 ```
-    uvicorn app:main --reload
+    uvicorn main:app --reload
 ```
 
 
