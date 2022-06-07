@@ -13,5 +13,5 @@ Install all dependencies
     uvicorn main:app --reload
 ```
 
-## Watch API Documentation 
-> Access the documentation :partying_face: [DOCS](http://127.0.0.1:8000/docs)
+## Watch API Documentation :partying_face:
+> Access the documentation of API on  http://127.0.0.1:8000/docs
