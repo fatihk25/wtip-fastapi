@@ -13,6 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi_utils.tasks import repeat_every
 from starlette.responses import StreamingResponse
 import linear_regression
+from fastapi.responses import FileResponse
 
 app = FastAPI()
 
@@ -97,6 +98,7 @@ async def get_prediction_image_by_commodity_name(commodity_name: str):
             continue
 
         file = images_path + image
-        return file
+        # return file
+        return FileResponse(file, media_type="image/png")
 
     return {"message": "the file doesn't exist"}
