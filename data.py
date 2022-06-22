@@ -28,7 +28,7 @@ for data_id in range(nr_of_data):
 
     data.append([data_id, transaction_date, random.choice(commodity), city, current_price, last_price])
 
-data_df = pd.DataFrame(data, columns=['ID', 'TransactionDate', 'Commodity' ,'City','Current Price', 'Last Price']) 
+data_df = pd.DataFrame(data, columns=['id', 'transactionDate', 'commodity' ,'city','currentPrice', 'lastPrice']) 
                 
 pd.pandas.set_option('display.max_columns', None)
 print(data_df)
