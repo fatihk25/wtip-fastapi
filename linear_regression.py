@@ -12,11 +12,11 @@ dataset = pd.read_csv(url)
 def predict_by_commodity(commodity):
     plt.switch_backend('Agg')
 
-    data = dataset[dataset['Commodity'] == commodity]
+    data = dataset[dataset['commodity'] == commodity]
     payload = {
-        'Price': data['Current Price'],
-        'Commodity': data['Commodity'],
-        'Year': pd.DatetimeIndex(data['TransactionDate']).year
+        'Price': data['currentPrice'],
+        'Commodity': data['commodity'],
+        'Year': pd.DatetimeIndex(data['transactionDate']).year
     }
     data = pd.DataFrame(payload)
 
@@ -51,7 +51,7 @@ def predict_by_commodity(commodity):
 
 
 def predict():
-    commodities = dataset.groupby(['Commodity'])['Commodity']
+    commodities = dataset.groupby(['commodity'])['commodity']
     commodities = commodities.nunique().index
 
     for commodity in commodities:

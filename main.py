@@ -7,7 +7,6 @@ from typing import Union
 from enum import Enum
 import matplotlib.image as mpimg
 from numpy import imag
-import cv2
 from pydantic import BaseModel
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
@@ -47,7 +46,7 @@ async def root():
 
 
 @app.get("/data")
-async def load_data(page_num: int = 1, page_size: int = 10):
+async def load_data(page_num: int = 1, page_size: int = 30):
     data = df.to_dict(orient="records")
     start = (page_num - 1) * page_size
     end = start + page_size
@@ -65,7 +64,7 @@ async def get_data(order_by: str = "TransactionDate", page_num: int = 1, page_si
 
 @app.get('/commodity/name/{commodity_name}')
 async def find_commodity_by_name(commodity_name: str,  page_num: int = 1, page_size: int = 10):
-    data = df.loc[df['Commodity'] == commodity_name]
+    data = df.loc[df['commodity'].str.lower() == commodity_name.lower()]
     data = data.to_dict(orient="records")
     start = (page_num - 1) * page_size
     end = start + page_size
@@ -74,7 +73,7 @@ async def find_commodity_by_name(commodity_name: str,  page_num: int = 1, page_s
 
 @app.get('/commodity/city/{commodity_city}')
 async def find_commodity_by_city(commodity_city: str,  page_num: int = 1, page_size: int = 10):
-    data = df.loc[df['City'] == commodity_city]
+    data = df.loc[df['city'].str.lower() == commodity_city.lower()]
     data = data.to_dict(orient="records")
     start = (page_num - 1) * page_size
     end = start + page_size
@@ -83,7 +82,7 @@ async def find_commodity_by_city(commodity_city: str,  page_num: int = 1, page_s
 
 @app.get('/commodity/{commodity_id}')
 async def find_commodity_by_id(commodity_id: int):
-    data = df.loc[df['ID'] == commodity_id]
+    data = df.loc[df['id'] == commodity_id]
     data = data.to_dict(orient="records")
     return data
 
